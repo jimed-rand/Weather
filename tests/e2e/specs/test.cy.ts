@@ -1,6 +1,7 @@
-describe('My First Test', () => {
-  it('Visits the app root url', () => {
+describe('Weather app', () => {
+  it('loads the home screen from index', () => {
     cy.visit('/')
-    cy.contains('#container', 'Ready to create an app?')
+    cy.get('ion-title', { timeout: 15000 }).should('contain.text', 'Weather')
+    cy.contains('Jakarta area', { timeout: 15000 }).should('be.visible')
   })
 })
