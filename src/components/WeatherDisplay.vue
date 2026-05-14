@@ -3,11 +3,6 @@
     <ion-header class="weather-header" :translucent="true">
       <ion-toolbar>
         <ion-title>Weather</ion-title>
-        <ion-buttons slot="end">
-          <ion-button aria-label="Refresh" @click="fetchWeather">
-            <ion-icon slot="icon-only" :icon="refreshOutline" />
-          </ion-button>
-        </ion-buttons>
       </ion-toolbar>
     </ion-header>
 
@@ -21,6 +16,11 @@
           <ion-title size="large">Weather</ion-title>
         </ion-toolbar>
       </ion-header>
+
+      <p class="refresh-hint">
+        To update the forecast, reload the page: press F5 on desktop, or scroll up from the top to
+        refresh on mobile.
+      </p>
 
       <div class="safe-pad">
         <div v-if="loading && !forecast" class="state-center">
@@ -104,7 +104,6 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
-  IonButtons,
   IonButton,
   IonIcon,
   IonSpinner,
@@ -121,7 +120,7 @@ import {
   IonLabel,
   IonNote,
 } from '@ionic/vue';
-import { refreshOutline, cloudOfflineOutline } from 'ionicons/icons';
+import { cloudOfflineOutline } from 'ionicons/icons';
 
 const API_BASE = 'https://api.open-meteo.com/v1/forecast';
 const LATITUDE = -6.2;
@@ -251,13 +250,21 @@ onMounted(() => {
 
 <style scoped>
 .weather-header ion-toolbar {
-  --background: linear-gradient(135deg, #1e3a5f 0%, #2563a8 45%, #38bdf8 100%);
-  --color: #fff;
+  --background: var(--weather-header-toolbar-bg);
+  --color: var(--weather-header-toolbar-color);
   --border-width: 0;
 }
 
 .weather-content {
-  --background: #0f172a;
+  --background: var(--weather-content-bg);
+}
+
+.refresh-hint {
+  margin: 0 20px 8px;
+  padding: 0 4px;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: var(--weather-hero-muted, var(--ion-color-medium));
 }
 
 .safe-pad {
@@ -276,7 +283,7 @@ onMounted(() => {
 
 .state-caption {
   margin-top: 12px;
-  color: var(--ion-color-medium, #94a3b8);
+  color: var(--weather-state-caption);
   font-size: 0.95rem;
 }
 
@@ -284,12 +291,12 @@ onMounted(() => {
   margin: 8px 0 0;
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--ion-text-color, #e2e8f0);
+  color: var(--weather-error-title);
 }
 
 .state-icon {
   font-size: 48px;
-  color: var(--ion-color-medium, #94a3b8);
+  color: var(--ion-color-medium);
 }
 
 .retry-btn {
@@ -300,9 +307,9 @@ onMounted(() => {
   margin: 8px 16px 20px;
   padding: 24px 20px 20px;
   border-radius: 20px;
-  background: linear-gradient(160deg, rgba(30, 58, 95, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
-  color: #f1f5f9;
+  background: var(--weather-hero-bg);
+  box-shadow: var(--weather-hero-shadow);
+  color: var(--weather-hero-text);
 }
 
 .hero-location {
@@ -311,13 +318,13 @@ onMounted(() => {
   font-weight: 600;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: #94a3b8;
+  color: var(--weather-hero-subtle);
 }
 
 .hero-coords {
   margin: 4px 0 0;
   font-size: 0.8rem;
-  color: #64748b;
+  color: var(--weather-hero-muted);
 }
 
 .hero-temp {
@@ -338,13 +345,13 @@ onMounted(() => {
   margin-top: 12px;
   font-size: 1.25rem;
   font-weight: 500;
-  color: #94a3b8;
+  color: var(--weather-hero-subtle);
 }
 
 .hero-sub {
   margin: 12px 0 0;
   font-size: 0.9rem;
-  color: #cbd5e1;
+  color: var(--weather-hero-muted);
 }
 
 .hero-stats {
@@ -352,7 +359,7 @@ onMounted(() => {
   gap: 16px;
   margin-top: 20px;
   padding-top: 16px;
-  border-top: 1px solid rgba(148, 163, 184, 0.25);
+  border-top: 1px solid var(--weather-hero-border);
 }
 
 .stat {
@@ -365,7 +372,7 @@ onMounted(() => {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #94a3b8;
+  color: var(--weather-hero-subtle);
 }
 
 .stat-value {
@@ -378,16 +385,16 @@ onMounted(() => {
 .hour-card {
   margin: 0 16px 16px;
   border-radius: 16px;
-  --background: #1e293b;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  --background: var(--weather-card-bg);
+  box-shadow: var(--weather-card-shadow);
 }
 
 .hour-card ion-card-title {
-  color: #f1f5f9;
+  color: var(--weather-card-title);
 }
 
 .hour-card ion-card-subtitle {
-  color: #94a3b8;
+  color: var(--weather-card-subtitle);
 }
 
 .hour-strip-wrap {
@@ -411,18 +418,18 @@ onMounted(() => {
   padding: 12px 10px;
   border: none;
   border-radius: 14px;
-  background: rgba(15, 23, 42, 0.85);
-  color: #e2e8f0;
+  background: var(--weather-pill-bg);
+  color: var(--weather-pill-color);
   font: inherit;
   cursor: pointer;
   text-align: center;
-  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.2);
+  box-shadow: inset 0 0 0 1px var(--weather-pill-border);
 }
 
 .hour-pill.current {
-  background: linear-gradient(145deg, #0ea5e9, #2563eb);
-  color: #fff;
-  box-shadow: 0 6px 16px rgba(14, 165, 233, 0.35);
+  background: var(--weather-pill-current-bg);
+  color: var(--weather-pill-current-color);
+  box-shadow: var(--weather-pill-current-shadow);
 }
 
 .hour-pill-time {
@@ -443,14 +450,14 @@ onMounted(() => {
 }
 
 :deep(.detail-list ion-item) {
-  --background: #1e293b;
-  --color: #e2e8f0;
-  --border-color: rgba(148, 163, 184, 0.15);
+  --background: var(--weather-list-item-bg);
+  --color: var(--weather-list-item-color);
+  --border-color: var(--weather-list-item-border);
 }
 
 :deep(.detail-list ion-list-header) {
   --background: transparent;
-  --color: #94a3b8;
+  --color: var(--weather-list-header-color);
 }
 
 :deep(.detail-list h3) {
@@ -459,7 +466,7 @@ onMounted(() => {
 }
 
 :deep(.detail-list p) {
-  color: #94a3b8;
+  color: var(--weather-list-secondary);
   margin-top: 4px;
 }
 </style>

@@ -1,2 +1,128 @@
-/* For information on how to create your own theme, please refer to:
-http://ionicframework.com/docs/theming/ */
+/**
+ * Tema terang — token global Ionic + variabel khusus layar cuaca.
+ * Lihat: https://ionicframework.com/docs/theming/
+ */
+
+:root {
+  color-scheme: light;
+
+  /* Primary — biru langit */
+  --ion-color-primary: #0284c7;
+  --ion-color-primary-rgb: 2, 132, 199;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #0274af;
+  --ion-color-primary-tint: #1b90cd;
+
+  /* Secondary — cyan lembut */
+  --ion-color-secondary: #0ea5e9;
+  --ion-color-secondary-rgb: 14, 165, 233;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #0c91cd;
+  --ion-color-secondary-tint: #26aeeb;
+
+  /* Tertiary — ungu netral */
+  --ion-color-tertiary: #6366f1;
+  --ion-color-tertiary-rgb: 99, 102, 241;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #575acf;
+  --ion-color-tertiary-tint: #7375f2;
+
+  --ion-color-success: #16a34a;
+  --ion-color-success-rgb: 22, 163, 74;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #138f41;
+  --ion-color-success-tint: #2dac5c;
+
+  --ion-color-warning: #ca8a04;
+  --ion-color-warning-rgb: 202, 138, 4;
+  --ion-color-warning-contrast: #ffffff;
+  --ion-color-warning-contrast-rgb: 255, 255, 255;
+  --ion-color-warning-shade: #b27a04;
+  --ion-color-warning-tint: #cf961d;
+
+  --ion-color-danger: #dc2626;
+  --ion-color-danger-rgb: 220, 38, 38;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #c22121;
+  --ion-color-danger-tint: #e03c3c;
+
+  --ion-color-dark: #0f172a;
+  --ion-color-dark-rgb: 15, 23, 42;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #0d1425;
+  --ion-color-dark-tint: #273548;
+
+  --ion-color-medium: #64748b;
+  --ion-color-medium-rgb: 100, 116, 139;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #58667a;
+  --ion-color-medium-tint: #748297;
+
+  --ion-color-light: #f8fafc;
+  --ion-color-light-rgb: 248, 250, 252;
+  --ion-color-light-contrast: #0f172a;
+  --ion-color-light-contrast-rgb: 15, 23, 42;
+  --ion-color-light-shade: #dadcdf;
+  --ion-color-light-tint: #f9fafb;
+
+  /* Layar cuaca — dipakai komponen */
+  --weather-header-toolbar-bg: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 45%, #7dd3fc 100%);
+  --weather-header-toolbar-color: #0c4a6e;
+  --weather-content-bg: #f0f9ff;
+  --weather-hero-bg: linear-gradient(160deg, #ffffff 0%, #e0f2fe 55%, #dbeafe 100%);
+  --weather-hero-text: #0f172a;
+  --weather-hero-muted: #64748b;
+  --weather-hero-subtle: #94a3b8;
+  --weather-hero-border: rgba(100, 116, 139, 0.25);
+  --weather-hero-shadow: 0 12px 40px rgba(14, 116, 144, 0.12);
+  --weather-card-bg: #ffffff;
+  --weather-card-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  --weather-card-title: #0f172a;
+  --weather-card-subtitle: #64748b;
+  --weather-pill-bg: #f1f5f9;
+  --weather-pill-color: #1e293b;
+  --weather-pill-border: rgba(148, 163, 184, 0.45);
+  --weather-pill-current-bg: linear-gradient(145deg, #0ea5e9, #0284c7);
+  --weather-pill-current-color: #ffffff;
+  --weather-pill-current-shadow: 0 6px 16px rgba(14, 165, 233, 0.35);
+  --weather-list-item-bg: #ffffff;
+  --weather-list-item-color: #0f172a;
+  --weather-list-item-border: rgba(148, 163, 184, 0.2);
+  --weather-list-header-color: #64748b;
+  --weather-list-secondary: #64748b;
+  --weather-state-caption: #64748b;
+  --weather-error-title: #0f172a;
+}
+
+/* Permukaan global Ionic — iOS */
+:root.ios {
+  --ion-background-color: #f0f9ff;
+  --ion-background-color-rgb: 240, 249, 255;
+  --ion-text-color: #0f172a;
+  --ion-text-color-rgb: 15, 23, 42;
+  --ion-toolbar-background: #f0f9ff;
+  --ion-item-background: #ffffff;
+  --ion-card-background: #ffffff;
+  --ion-tab-bar-background: #f8fafc;
+  --ion-tab-bar-background-focused: #e2e8f0;
+}
+
+/* Material Design */
+:root.md {
+  --ion-background-color: #f0f9ff;
+  --ion-background-color-rgb: 240, 249, 255;
+  --ion-text-color: #0f172a;
+  --ion-text-color-rgb: 15, 23, 42;
+  --ion-toolbar-background: #f0f9ff;
+  --ion-item-background: #ffffff;
+  --ion-card-background: #ffffff;
+  --ion-tab-bar-background: #f8fafc;
+  --ion-tab-bar-background-focused: #e2e8f0;
+}
